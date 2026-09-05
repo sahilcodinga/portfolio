@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sahil | Digital Creator & Tech Enthusiast</title>
+
+<style>
+
+/* =====================================================
+   PREMIUM PORTFOLIO
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+:root{
+    --bg:#030303;
+    --card:rgba(255,255,255,.055);
+    --border:rgba(255,255,255,.12);
+    --purple:#8b5cf6;
+    --blue:#3b82f6;
+    --text:#ffffff;
+    --muted:#9ca3af;
+}
+
+body{
+    background:#030303;
+    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+    overflow-x:hidden;
+}
+
+/* =====================================================
+   LOADING SCREEN
+===================================================== */
+
+.loader{
+    position:fixed;
+    inset:0;
+    background:#030303;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    z-index:99999;
+    animation:loaderHide 1s ease 2.8s forwards;
+}
+
+.loader-logo{
+    font-size:55px;
+    font-weight:900;
+    letter-spacing:5px;
+    background:linear-gradient(90deg,#fff,#8b5cf6,#3b82f6,#fff);
+    background-size:300%;
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:gradientMove 2s infinite;
+}
+
+.loader-line{
+    width:180px;
+    height:3px;
+    background:#222;
+    margin-top:25px;
+    overflow:hidden;
+    border-radius:20px;
+}
+
+.loader-line:after{
+    content:"";
+    display:block;
+    height:100%;
+    width:100%;
+    background:linear-gradient(90deg,#8b5cf6,#3b82f6);
+    animation:load 2.3s ease;
+}
+
+@keyframes load{
+    from{transform:translateX(-100%);}
+    to{transform:translateX(0);}
+}
+
+@keyframes loaderHide{
+    to{
+        opacity:0;
+        visibility:hidden;
+    }
+}
+
+@keyframes gradientMove{
+    0%{background-position:0%;}
+    50%{background-position:100%;}
+    100%{background-position:0%;}
+}
+
+/* =====================================================
+   BACKGROUND EFFECTS
+===================================================== */
+
+.bg-orb{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(100px);
+    pointer-events:none;
+    z-index:-3;
+}
+
+.orb1{
+    width:350px;
+    height:350px;
+    background:#6d28d9;
+    top:-150px;
+    left:-100px;
+    opacity:.25;
+    animation:orbFloat 8s infinite alternate;
+}
+
+.orb2{
+    width:400px;
+    height:400px;
+    background:#2563eb;
+    right:-150px;
+    top:40%;
+    opacity:.18;
+    animation:orbFloat 10s infinite alternate-reverse;
+}
+
+.orb3{
+    width:300px;
+    height:300px;
+    background:#9333ea;
+    bottom:-150px;
+    left:35%;
+    opacity:.15;
+}
+
+@keyframes orbFloat{
+    from{transform:translate(0,0);}
+    to{transform:translate(100px,70px);}
+}
+
+/* =====================================================
+   PARTICLES
+===================================================== */
+
+.particles{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+}
+
+.particles span{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    opacity:.5;
+    animation:particleMove 8s linear infinite;
+}
+
+.particles span:nth-child(1){left:5%;top:20%;animation-delay:1s;}
+.particles span:nth-child(2){left:15%;top:70%;animation-delay:3s;}
+.particles span:nth-child(3){left:30%;top:40%;animation-delay:2s;}
+.particles span:nth-child(4){left:45%;top:80%;animation-delay:5s;}
+.particles span:nth-child(5){left:60%;top:15%;animation-delay:2s;}
+.particles span:nth-child(6){left:75%;top:55%;animation-delay:4s;}
+.particles span:nth-child(7){left:90%;top:30%;animation-delay:1s;}
+.particles span:nth-child(8){left:85%;top:85%;animation-delay:6s;}
+.particles span:nth-child(9){left:50%;top:50%;animation-delay:3s;}
+.particles span:nth-child(10){left:25%;top:10%;animation-delay:5s;}
+
+@keyframes particleMove{
+    0%{
+        transform:translateY(0) scale(1);
+        opacity:0;
+    }
+    50%{
+        opacity:.7;
+    }
+    100%{
+        transform:translateY(-250px) scale(1.8);
+        opacity:0;
+    }
+}
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+nav{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:90%;
+    max-width:1150px;
+    padding:15px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border:1px solid var(--border);
+    border-radius:50px;
+    background:rgba(10,10,10,.65);
+    backdrop-filter:blur(20px);
+    z-index:1000;
+    box-shadow:0 15px 50px rgba(0,0,0,.3);
+}
+
+.logo{
+    font-size:23px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:#8b5cf6;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+nav a{
+    color:#aaa;
+    text-decoration:none;
+    font-size:13px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:white;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:140px 7% 70px;
+}
+
+.hero-container{
+    max-width:1150px;
+    width:100%;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:60px;
+    align-items:center;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:9px 17px;
+    border:1px solid rgba(139,92,246,.4);
+    border-radius:30px;
+    background:rgba(139,92,246,.08);
+    color:#c4b5fd;
+    font-size:12px;
+    margin-bottom:25px;
+    animation:fadeUp 1s ease;
+}
+
+.status{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#22c55e;
+    box-shadow:0 0 15px #22c55e;
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    50%{transform:scale(1.5);opacity:.5;}
+}
+
+.hero h1{
+    font-size:clamp(55px,8vw,95px);
+    line-height:.95;
+    letter-spacing:-5px;
+    margin-bottom:25px;
+    animation:fadeUp 1s ease .2s both;
+}
+
+.hero h1 span{
+    background:linear-gradient(
+        90deg,
+        #fff,
+        #a78bfa,
+        #60a5fa,
+        #fff
+    );
+    background-size:300%;
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:gradientMove 4s infinite;
+}
+
+.hero h2{
+    color:#aaa;
+    font-size:21px;
+    font-weight:400;
+    min-height:28px;
+    animation:fadeUp 1s ease .4s both;
+}
+
+.hero-description{
+    color:#777;
+    max-width:600px;
+    line-height:1.9;
+    margin-top:20px;
+    animation:fadeUp 1s ease .6s both;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(35px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.hero-buttons{
+    margin-top:35px;
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    position:relative;
+    padding:15px 27px;
+    border-radius:40px;
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+    font-size:14px;
+    overflow:hidden;
+    transition:.4s;
+}
+
+.btn-primary{
+    background:linear-gradient(100deg,#7c3aed,#2563eb);
+    box-shadow:0 0 30px rgba(124,58,237,.3);
+}
+
+.btn-secondary{
+    border:1px solid #333;
+    background:rgba(255,255,255,.04);
+}
+
+.btn:hover{
+    transform:translateY(-5px) scale(1.03);
+    box-shadow:0 15px 40px rgba(0,0,0,.5);
+}
+
+/* =====================================================
+   PHOTO
+===================================================== */
+
+.photo-area{
+    display:flex;
+    justify-content:center;
+    position:relative;
+}
+
+.photo-ring{
+    position:absolute;
+    width:390px;
+    height:390px;
+    border:1px solid rgba(139,92,246,.4);
+    border-radius:50%;
+    animation:rotate 12s linear infinite;
+}
+
+.photo-ring:before{
+    content:"";
+    position:absolute;
+    width:12px;
+    height:12px;
+    background:#8b5cf6;
+    border-radius:50%;
+    top:20px;
+    left:50%;
+    box-shadow:0 0 25px #8b5cf6;
+}
+
+@keyframes rotate{
+    to{transform:rotate(360deg);}
+}
+
+.photo-box{
+    width:350px;
+    height:450px;
+    position:relative;
+    border-radius:35px;
+    padding:2px;
+    background:linear-gradient(
+        135deg,
+        #8b5cf6,
+        transparent 35%,
+        transparent 65%,
+        #2563eb
+    );
+    animation:photoFloat 5s ease-in-out infinite;
+}
+
+.photo-box:before{
+    content:"";
+    position:absolute;
+    inset:-30px;
+    background:linear-gradient(135deg,#7c3aed,#2563eb);
+    filter:blur(70px);
+    opacity:.25;
+    z-index:-1;
+}
+
+.photo-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:33px;
+    display:block;
+    filter:saturate(1.1);
+}
+
+@keyframes photoFloat{
+    50%{transform:translateY(-15px);}
+}
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+section{
+    padding:110px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:65px;
+}
+
+.section-title small{
+    color:#8b5cf6;
+    letter-spacing:5px;
+    font-size:11px;
+}
+
+.section-title h2{
+    font-size:48px;
+    margin-top:12px;
+}
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+.about-card{
+    max-width:1000px;
+    margin:auto;
+    padding:50px;
+    border:1px solid var(--border);
+    border-radius:30px;
+    background:var(--card);
+    backdrop-filter:blur(20px);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.about-card:before{
+    content:"";
+    position:absolute;
+    width:200px;
+    height:200px;
+    background:#7c3aed;
+    filter:blur(100px);
+    opacity:.15;
+    top:-100px;
+    right:-50px;
+}
+
+.about-card p{
+    color:#999;
+    line-height:2;
+    font-size:16px;
+}
+
+.about-card strong{
+    color:white;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:35px;
+}
+
+.info{
+    padding:20px;
+    border:1px solid var(--border);
+    border-radius:18px;
+    background:rgba(255,255,255,.03);
+}
+
+.info small{
+    color:#777;
+}
+
+.info h3{
+    margin-top:7px;
+}
+
+/* =====================================================
+   SKILLS
+===================================================== */
+
+.skills{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.skill{
+    padding:30px;
+    border:1px solid var(--border);
+    border-radius:25px;
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,.07),
+        rgba(255,255,255,.015)
+    );
+    transition:.5s;
+}
+
+.skill:hover{
+    transform:translateY(-8px);
+    border-color:#8b5cf6;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+}
+
+.skill-top{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:15px;
+}
+
+.skill h3{
+    font-size:18px;
+}
+
+.percent{
+    color:#a78bfa;
+}
+
+.bar{
+    width:100%;
+    height:5px;
+    background:#222;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.fill{
+    height:100%;
+    width:0;
+    background:linear-gradient(90deg,#7c3aed,#3b82f6);
+    border-radius:10px;
+    animation:fillBar 2s forwards;
+}
+
+.html{width:90%;}
+.meta{width:82%;}
+.digital{width:88%;}
+.social{width:86%;}
+.adca{width:92%;}
+.prompt{width:85%;}
+.problem{width:80%;}
+
+@keyframes fillBar{
+    from{transform:translateX(-100%);}
+    to{transform:translateX(0);}
+}
+
+/* =====================================================
+   EDUCATION
+===================================================== */
+
+.timeline{
+    max-width:850px;
+    margin:auto;
+    border-left:1px solid #333;
+    padding-left:35px;
+}
+
+.timeline-item{
+    position:relative;
+    padding:30px;
+    margin-bottom:25px;
+    border:1px solid var(--border);
+    border-radius:20px;
+    background:rgba(255,255,255,.04);
+}
+
+.timeline-item:before{
+    content:"";
+    position:absolute;
+    width:12px;
+    height:12px;
+    background:#8b5cf6;
+    border-radius:50%;
+    left:-42px;
+    top:35px;
+    box-shadow:0 0 20px #8b5cf6;
+}
+
+.timeline-item small{
+    color:#8b5cf6;
+}
+
+.timeline-item h3{
+    margin:10px 0;
+}
+
+.timeline-item p{
+    color:#888;
+    line-height:1.7;
+}
+
+/* =====================================================
+   SOCIAL
+===================================================== */
+
+.social-grid{
+    max-width:900px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.social-card{
+    padding:35px 20px;
+    text-align:center;
+    border:1px solid var(--border);
+    border-radius:25px;
+    background:rgba(255,255,255,.04);
+    text-decoration:none;
+    color:white;
+    transition:.4s;
+}
+
+.social-card:hover{
+    transform:translateY(-10px) scale(1.02);
+    border-color:#8b5cf6;
+    box-shadow:0 20px 50px rgba(124,58,237,.15);
+}
+
+.social-icon{
+    font-size:35px;
+    margin-bottom:15px;
+}
+
+.social-card h3{
+    margin-bottom:7px;
+}
+
+.social-card p{
+    color:#777;
+    font-size:13px;
+}
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact-box{
+    max-width:1000px;
+    margin:auto;
+    padding:60px;
+    text-align:center;
+    border-radius:35px;
+    border:1px solid var(--border);
+    background:
+    radial-gradient(
+        circle at center,
+        rgba(124,58,237,.12),
+        transparent 60%
+    ),
+    rgba(255,255,255,.03);
+}
+
+.contact-box h2{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.contact-box p{
+    color:#888;
+    margin-bottom:30px;
+}
+
+.contact-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    text-align:center;
+    padding:45px 20px;
+    border-top:1px solid rgba(255,255,255,.08);
+    color:#555;
+}
+
+footer strong{
+    color:white;
+}
+
+/* =====================================================
+   SCROLL TOP
+===================================================== */
+
+.top{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#111;
+    border:1px solid #333;
+    color:white;
+    text-decoration:none;
+    z-index:500;
+    transition:.3s;
+}
+
+.top:hover{
+    background:#7c3aed;
+    transform:translateY(-5px);
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:850px){
+
+    nav{
+        width:94%;
+    }
+
+    nav ul{
+        display:none;
+    }
+
+    .hero{
+        padding-top:150px;
+    }
+
+    .hero-container{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero h1{
+        letter-spacing:-3px;
+    }
+
+    .hero-description{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .photo-area{
+        margin-bottom:20px;
+    }
+
+    .photo-ring{
+        width:300px;
+        height:300px;
+    }
+
+    .photo-box{
+        width:280px;
+        height:360px;
+    }
+
+    .skills{
+        grid-template-columns:1fr;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .social-grid{
+        grid-template-columns:1fr;
+    }
+
+    .about-card{
+        padding:30px 20px;
+    }
+
+    .contact-box{
+        padding:40px 20px;
+    }
+
+    .contact-box h2{
+        font-size:34px;
+    }
+
+    .section-title h2{
+        font-size:36px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- LOADER -->
+
+<div class="loader">
+
+    <div class="loader-logo">
+        SAHIL
+    </div>
+
+    <div class="loader-line"></div>
+
+</div>
+
+
+<!-- BACKGROUND -->
+
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<div class="bg-orb orb3"></div>
+
+<div class="particles">
+
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">
+    SAHIL<span>.</span>
+</div>
+
+<ul>
+
+<li><a href="#home">HOME</a></li>
+<li><a href="#about">ABOUT</a></li>
+<li><a href="#skills">SKILLS</a></li>
+<li><a href="#education">EDUCATION</a></li>
+<li><a href="#social">SOCIAL</a></li>
+<li><a href="#contact">CONTACT</a></li>
+
+</ul>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="hero-container">
+
+
+<div>
+
+<div class="badge">
+
+<span class="status"></span>
+
+Available for Opportunities
+
+</div>
+
+
+<h1>
+
+I'm <span>Sahil</span>
+
+</h1>
+
+
+<h2 id="typing"></h2>
+
+
+<p class="hero-description">
+
+12th Passed • Future B.Tech CSE Student •
+Digital Marketing • Meta Ads • Web Development •
+AI Prompt Engineering • Social Media Management
+
+</p>
+
+
+<div class="hero-buttons">
+
+<a href="#contact" class="btn btn-primary">
+Let's Connect →
+</a>
+
+<a
+href="https://wa.me/917651894358"
+target="_blank"
+class="btn btn-secondary">
+
+WhatsApp Me
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- PHOTO -->
+
+<div class="photo-area">
+
+<div class="photo-ring"></div>
+
+<div class="photo-box">
+
+<img src="1000031080.png" alt="Sahil">
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="section-title">
+
+<small>01 — ABOUT ME</small>
+
+<h2>Beyond The Ordinary.</h2>
+
+</div>
+
+
+<div class="about-card">
+
+<p>
+
+Hello, I'm <strong>Sahil</strong>.
+I have successfully completed my 12th and
+I'm preparing for my upcoming journey in
+<strong>B.Tech Computer Science Engineering.</strong>
+
+<br><br>
+
+I am passionate about technology, digital marketing,
+web development, Meta Ads, AI and social media.
+I believe in learning continuously, experimenting
+with new technologies and building a strong
+professional future.
+
+</p>
+
+
+<div class="info-grid">
+
+<div class="info">
+
+<small>NAME</small>
+
+<h3>Sahil</h3>
+
+</div>
+
+
+<div class="info">
+
+<small>DATE OF BIRTH</small>
+
+<h3>03/07/2008</h3>
+
+</div>
+
+
+<div class="info">
+
+<small>EDUCATION</small>
+
+<h3>12th Passed</h3>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+<div class="section-title">
+
+<small>02 — EXPERTISE</small>
+
+<h2>My Skills</h2>
+
+</div>
+
+
+<div class="skills">
+
+
+<div class="skill">
+
+<div class="skill-top">
+
+<h3>HTML Programming</h3>
+
+<span class="percent">90%</span>
+
+</div>
+
+<div class="bar">
+<div class="fill html"></div>
+</div>
+
+</div>
+
+
+<div class="skill">
+
+<div class="skill-top">
+
+<h3>Meta Ads</h3>
+
+<span class="percent">82%</span>
+
+</div>
+
+<div class="bar">
+<div class="fill meta"></div>
+</div>
+
+</div>
+
+
+<div class="skill">
+
+<div class="skill-top">
+
+<h3>Digital Marketing</h3>
+
+<span class="percent">88%</span>
+
+</div>
+
+<div class="bar">
+<div class="fill digital"></div>
+</div>
+
+</div>
+
+
+<div class="skill">
+
+<div class="skill-top">
+
+<h3>Social Media Management</h3>
+
+<span class="percent">86%</span>
+
+</div>
+
+<div class="bar">
+<div class="fill social"></div>
+</div>
+
+</div>
+
+
+<div class="skill">
+
+<div class="skill-top">
+
+<h3>ADCA — 1 Year Course</h3>
+
+<span class="percent">92%</span>
+
+</div>
+
+<div class="bar">
+<div class="fill adca"></div>
+</div>
+
+</div>
+
+
+<div class="skill">
+
+<div class="skill-top">
+
+<h3>Prompt Engineering</h3>
+
+<span class="percent">85%</span>
+
+</div>
+
+<div class="bar">
+<div class="fill prompt"></div>
+</div>
+
+</div>
+
+
+<div class="skill">
+
+<div class="skill-top">
+
+<h3>Basic Tech Problem Solving</h3>
+
+<span class="percent">80%</span>
+
+</div>
+
+<div class="bar">
+<div class="fill problem"></div>
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- EDUCATION -->
+
+<section id="education">
+
+<div class="section-title">
+
+<small>03 — MY JOURNEY</small>
+
+<h2>Education</h2>
+
+</div>
+
+
+<div class="timeline">
+
+
+<div class="timeline-item">
+
+<small>COMPLETED</small>
+
+<h3>Class 12th — Passed</h3>
+
+<p>
+
+Successfully completed Class 12th.
+Currently focusing on building technology,
+digital marketing and computer skills.
+
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<small>NEXT MILESTONE</small>
+
+<h3>B.Tech Computer Science Engineering</h3>
+
+<p>
+
+Planning to take admission in B.Tech CSE
+and build a professional career in
+technology and software development.
+
+</p>
+
+</div>
+
+
+<div class="timeline-item">
+
+<small>SKILL DEVELOPMENT</small>
+
+<h3>ADCA — 1 Year Course</h3>
+
+<p>
+
+Completed a one-year ADCA computer
+application course and developed
+fundamental computer skills.
+
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- SOCIAL -->
+
+<section id="social">
+
+<div class="section-title">
+
+<small>04 — CONNECT WITH ME</small>
+
+<h2>My Social Media</h2>
+
+</div>
+
+
+<div class="social-grid">
+
+
+<a
+href="https://www.instagram.com/offical__sahil__pvt/"
+target="_blank"
+class="social-card">
+
+<div class="social-icon">◎</div>
+
+<h3>Instagram</h3>
+
+<p>@offical__sahil__pvt</p>
+
+</a>
+
+
+<a
+href="https://wa.me/917651894358"
+target="_blank"
+class="social-card">
+
+<div class="social-icon">◉</div>
+
+<h3>WhatsApp</h3>
+
+<p>+91 7651894358</p>
+
+</a>
+
+
+<a
+href="mailto:sahilmediaagency56@gmail.com"
+class="social-card">
+
+<div class="social-icon">✉</div>
+
+<h3>Email</h3>
+
+<p>sahilmediaagency56@gmail.com</p>
+
+</a>
+
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="contact-box">
+
+<h2>Let's Build Something.</h2>
+
+<p>
+
+Have an opportunity, project or collaboration idea?
+Let's connect and discuss.
+
+</p>
+
+
+<div class="contact-buttons">
+
+<a
+href="https://wa.me/917651894358"
+target="_blank"
+class="btn btn-primary">
+
+Chat on WhatsApp →
+
+</a>
+
+
+<a
+href="mailto:sahilmediaagency56@gmail.com"
+class="btn btn-secondary">
+
+Send Email →
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+
+© 2026 <strong>Sahil</strong>.
+All Rights Reserved.
+
+</p>
+
+<p style="margin-top:10px;">
+
+Designed & Built with HTML • CSS • JavaScript
+
+</p>
+
+</footer>
+
+
+<!-- TOP BUTTON -->
+
+<a href="#home" class="top">↑</a>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* TYPING ANIMATION */
+
+const words = [
+    "Digital Marketer",
+    "Tech Enthusiast",
+    "Web Developer",
+    "AI Prompt Engineer",
+    "Social Media Manager",
+    "Future B.Tech CSE Student"
+];
+
+let wordIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+function typing(){
+
+    const element = document.getElementById("typing");
+
+    let word = words[wordIndex];
+
+    if(!deleting){
+
+        element.textContent = word.substring(
+            0,
+            charIndex + 1
+        );
+
+        charIndex++;
+
+        if(charIndex === word.length){
+
+            deleting = true;
+
+            setTimeout(typing,1200);
+
+            return;
+        }
+
+    }else{
+
+        element.textContent = word.substring(
+            0,
+            charIndex - 1
+        );
+
+        charIndex--;
+
+        if(charIndex === 0){
+
+            deleting = false;
+
+            wordIndex++;
+
+            if(wordIndex === words.length){
+                wordIndex = 0;
+            }
+
+        }
+
+    }
+
+    setTimeout(typing,deleting ? 45 : 85);
+
+}
+
+typing();
+
+
+/* CURSOR GLOW */
+
+const glow = document.createElement("div");
+
+glow.style.position="fixed";
+glow.style.width="180px";
+glow.style.height="180px";
+glow.style.borderRadius="50%";
+glow.style.pointerEvents="none";
+glow.style.background=
+"radial-gradient(circle,rgba(139,92,246,.08),transparent 70%)";
+glow.style.transform="translate(-50%,-50%)";
+glow.style.zIndex="999";
+
+document.body.appendChild(glow);
+
+document.addEventListener("mousemove",function(e){
+
+    glow.style.left=e.clientX+"px";
+    glow.style.top=e.clientY+"px";
+
+});
+
+</script>
+
+</body>
+</html>
